@@ -1,0 +1,117 @@
+// =============================================================================
+// Variables, Mixins, and Functions
+// =============================================================================
+
+// Variables
+// =============================================================================
+
+$grid-direction:left !default; // switch to 'right' for rtl
+$grid-gutter:20px !default; // can be px, em, or %
+
+// Functions
+// =============================================================================
+
+// Find the greatest common factor
+// of two integers
+@function gcf($a, $b) {
+    @if $b == 0 {
+        @return $a;
+    }
+    @else {
+        @return gcf($b, $a % $b)
+    }
+}
+
+// Check if a list contains a value
+@function contains($list, $value) {
+    @if type-of($list) == list {
+        @return not not index($list, $value);
+    }
+    @else {
+        @return $list == $value;
+    }
+}
+
+
+// Mixins
+// =============================================================================
+
+@mixin box-sizing ($box) {
+    -webkit-box-sizing: $box;
+    -moz-box-sizing: $box;
+    box-sizing: $box;
+}
+
+// Fluid grid units & offsets
+
+// USAGE: provide a space-separated list of integers, each of which represents
+// the number of parts that make up a grid component. Optionally provide a
+// modifier suffix that can be used to adjust grids in different contexts (e.g.
+// viewport dimensions)
+
+// TODO: work out how to combine rules for numbers that share a greatest common
+// factor without the unit-list actually containing the fraction to which they
+// can both be reduced.
+
+@mixin grid-build-units($units, $modifier: '') {
+    /* Proportional units
+       ========================================================================== */
+
+    /*
+     * Specify the proportional width of an object.
+     * Primarily for, but not limited to, use with `.grid__cell` components.
+     * Intentional redundancy build into each set of unit classes.
+     */
+
+    // step through each value in the list of units
+    @each $n in $units {
+        // this means we can avoid creating rules like `.unit-12-12 {}`
+        $x: $n - 1;
+
+        @for $i from 1 through $x {
+            // find the greatest common factor
+            $g: gcf($i, $n);
+            // initialize variables
+            $i-r: ();
+            $n-r: ();
+
+            @if $g > 1 {
+                // reduced value of $i
+                $i-r: $i/$g;
+                // reduced value of $n
+                $n-r: $n/$g;
+            }
+
+            // check if the reduced value of $n was also supplied
+            // in the list of units to be built
+            $canreduce: contains($units, $n-r);
+
+            // create units based on fractions
+            .unit-#{$i}-#{$n}#{$modifier} {
+                // if this unit can be reduced
+                // then extend the previous rule
+                @if $i-r and $canreduce {
+                    @extend .unit-#{$i-r}-#{$n-r}#{$modifier};
+                }
+                // otherwise create a new % width
+                @else {
+                    width: percentage($i / $n);
+                }
+            }
+
+            // create unit offsets based on fractions
+            .before-#{$i}-#{$n}#{$modifier} {
+                // if this offset can be reduced
+                // then extend the previous rule
+                @if $i-r and $canreduce {
+                    @extend .before-#{$i-r}-#{$n-r}#{$modifier};
+                }
+                // otherwise create a new % margin
+                @else {
+                    margin-#{$grid-direction}: percentage($i / $n);
+                }
+            }
+        }
+    }
+}
+

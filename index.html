@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Griddle - CSS layout helper</title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/example-mobile.css" media="(min-width:30em)">
+    <link rel="stylesheet" href="css/example-desktop.css" media="(min-width:40em)">
+    <!--[if (lt IE 9) & (!IEMobile)]>
+    <link rel="stylesheet" href="css/example-mobile.css">
+    <link rel="stylesheet" href="css/example-desktop.css">
+    <![endif]-->
+
+    <style>
+        body { line-height: 1.5; }
+        a { color: #105cb6; text-decoration: none; }
+        a:hover, a:focus, a:active { color: #0a3870; text-decoration: underline; }
+        p { margin: 1.5em 0; }
+        pre { overflow-x: auto; padding: 1.25em; border: 1px solid #e6e6e6; border-left-width: 5px; margin: 1.6em 0; font-size: 0.875em; background: #fcfcfc; white-space: pre; word-wrap: normal; }
+        code { color: #d14; }
+        h1, h2 { line-height: 1.1; }
+        h1 { font-size: 3em; }
+        h2 { margin: 1.5em 0 0.5em; }
+        ul { list-style: square; }
+        li { margin: 0.5em 0; }
+        .container { max-width: 700px; padding: 0 10px; margin: 0 auto; overflow: hidden; }
+        .box { min-height: 20px; padding: 5px; margin-bottom: 10px; border-radius: 2px; text-align: center; background: #ddd; background: rgba(0,0,0,0.15); }
+        .footer { padding: 30px 0; border-top: 1px solid #ccc; margin-top: 30px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1><b>Griddle</b></h1>
+    <p>Griddle is a fluid and modular grid system for modern browsers &mdash; IE8+, Firefox, Safari, Opera, Chrome.</p>
+    <p>It uses <code>inline-block</code> and <code>box-sizing</code> to provide features that float-based layouts cannot. At Griddle's core is a set of Sass functions and mixins that automate the production of the grid's CSS.</p>
+
+    <h2>The benefits</h2>
+    <p>Using <code>inline-block</code>, <code>box-sizing</code>, and percentage units at the core of a CSS grid system has several advantages:</p>
+    <ul>
+        <li>Individual cells wrap "intelligently" within the grid - this has some benefits for layout adjustments at different viewport dimensions.</li>
+        <li>Grid gutter and offset dimensions can be kept independent of the grid cell proportions.</li>
+        <li>Easy horizontal centering of cells, some control over vertical alignment.</li>
+        <li>Suitable for simple "responsive" layouts.</li>
+        <li>Easy grid nesting.</li>
+    </ul>
+
+    <h2>Proportional grids</h2>
+    <p>The <code>grid-build-units</code> Sass mixin makes it easy to create several proportional grids (e.g., both a 2-part and a 12-part grid). It will combine rules where possible.</p>
+    <p>For example, <code>grid-build-units(2 3 6 12)</code> will let you use the <code>unit-1-2</code>, <code>unit-2-4</code>, <code>unit-3-6</code>, and <code>unit-6-12</code> classes to specify that an element should take up 50% of its container.</p>
+
+<pre class="prettyprint"><code>&lt;div class="grid">
+    &lt;div class="grid__cell unit-1-2">&lt;/div>
+    &lt;div class="grid__cell unit-1-2">&lt;/div>
+&lt;/div></code></pre>
+
+    <div class="grid">
+        <div class="grid__cell unit-1-2"><div class="box">1</div></div>
+        <div class="grid__cell unit-1-2"><div class="box">2</div></div>
+
+        <div class="grid__cell unit-1-3"><div class="box">3</div></div>
+        <div class="grid__cell unit-1-3"><div class="box">4</div></div>
+        <div class="grid__cell unit-1-3"><div class="box">5</div></div>
+
+        <div class="grid__cell unit-1-4"><div class="box">6</div></div>
+        <div class="grid__cell unit-1-4"><div class="box">7</div></div>
+        <div class="grid__cell unit-1-4"><div class="box">8</div></div>
+        <div class="grid__cell unit-1-4"><div class="box">9</div></div>
+
+        <div class="grid__cell unit-1-3 unit-1-5--desktop"><div class="box">10</div></div>
+        <div class="grid__cell unit-1-3 unit-1-5--desktop"><div class="box">11</div></div>
+        <div class="grid__cell unit-1-3 unit-1-5--desktop"><div class="box">12</div></div>
+        <div class="grid__cell unit-1-2 unit-1-5--desktop"><div class="box">13</div></div>
+        <div class="grid__cell unit-1-2 unit-1-5--desktop"><div class="box">14</div></div>
+
+        <div class="grid__cell unit-1-3 unit-1-6--desktop"><div class="box">15</div></div>
+        <div class="grid__cell unit-1-3 unit-1-6--desktop"><div class="box">16</div></div>
+        <div class="grid__cell unit-1-3 unit-1-6--desktop"><div class="box">17</div></div>
+        <div class="grid__cell unit-3-6--desktop"><div class="box">18</div></div>
+
+        <div class="grid__cell unit-1-3 unit-5-12--desktop"><div class="box">19</div></div>
+        <div class="grid__cell unit-2-3 unit-7-12--desktop"><div class="box">20</div></div>
+    </div>
+
+    <h2>Fluid offsets</h2>
+    <p>Grid units can be offset by prepending a percentage margin to any unit using a <code>before-x-y</code> class. For example, adding a class of <code>before-1-3</code> will offset a unit by one third (33.333%) of its container.</p>
+
+    <div class="grid">
+        <div class="grid__cell unit-1-4 unit-4-12--desktop"><div class="box">&nbsp;</div></div>
+        <div class="grid__cell unit-3-4 unit-7-12--desktop before-1-12--desktop"><div class="box">[offset]</div></div>
+    </div>
+
+    <h2>Nested grids</h2>
+    <p>Place a new <code>grid</code> object within a <code>grid__cell</code>.</p>
+
+    <div class="grid">
+        <div class="grid__cell unit-2-3--desktop">
+            <div class="box">
+                <div class="grid" style="margin-bottom:-10px">
+                    <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+                    <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+                    <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+                    <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+                    <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+                </div>
+            </div>
+        </div>
+        <div class="grid__cell unit-1-3--desktop"><div class="box" style="height:78px"></div></div>
+    </div>
+
+    <h2>Centered units</h2>
+    <p><b>Method 1</b>. Add the <code>grid--center</code> modifier class to automatically center all units within a grid. It adapts to accomodate and center a variable number of units.</p>
+
+<pre class="prettyprint"><code>&lt;div class="grid grid--center">
+    &lt;div class="grid__cell unit-1-3">&lt;/div>
+    &lt;div class="grid__cell unit-1-3">&lt;/div>
+&lt;/div></code></pre>
+
+    <div class="grid grid--center">
+        <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+    </div>
+
+    <div class="grid grid--center">
+        <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+        <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+    </div>
+
+    <div class="grid grid--center">
+        <div class="grid__cell unit-1-4"><div class="box">1/4</div></div>
+        <div class="grid__cell unit-1-4"><div class="box">1/4</div></div>
+        <div class="grid__cell unit-1-4"><div class="box">1/4</div></div>
+    </div>
+
+    <p><b>Method 2</b>. Add the <code>grid__cell--center</code> modifier to any grid unit and have just that one unit centered on its own row. The grid unit can still be used to contain child <code>grid</code> objects.</p>
+
+<pre class="prettyprint"><code>&lt;div class="grid">
+    &lt;div class="grid__cell grid__cell--center unit-3-4">&lt;/div>
+&lt;/div></code></pre>
+
+    <div class="grid">
+        <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+        <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+        <div class="grid__cell grid__cell--center unit-3-4">
+            <div class="box">3/4</div>
+            <div class="grid">
+                <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+                <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+                <div class="grid__cell unit-1-3"><div class="box">1/3</div></div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Hybrid units</h2>
+    <p>The grid system allows for a mixture of fixed and fluid units, but requires some customisation. For example, a fixed-width sidebar in a fluid-width app can be created by adding a custom class that sets a width and floats the unit: <code>.sidebar {float:left; width:320px;}</code>.</p>
+    <p>Nested <code>grid</code> objects are used to house the fluid-width content, which adapts to fit the remaining space available. Each unit within the nested <code>grid</code> is sized relative to this remaining space.</p>
+
+<pre class="prettyprint"><code>&lt;div class="grid">
+    &lt;div class="grid__cell sidebar">[sidebar content]&lt;/div>
+    &lt;div class="grid">
+        &lt;div class="grid__cell unit-1-2">50% of remaining width&lt;/div>
+        &lt;div class="grid__cell unit-1-2">50% of remaining width&lt;/div>
+    &lt;/div>
+&lt;/div></code></pre>
+
+    <div class="grid">
+        <div class="grid__cell"><div class="box">full</div></div>
+    </div>
+    <div class="grid">
+        <div class="grid__cell sidebar"><div class="box">fixed-width sidebar<br>(on desktop)</div></div>
+        <div class="grid">
+            <div class="grid__cell"><div class="box">full</div></div>
+            <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+            <div class="grid__cell unit-1-2"><div class="box">1/2</div></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        By <a href="http://nicolasgallagher.com">Nicolas Gallagher</a> &mdash; <a href="http://twitter.com/necolas">@necolas</a>
+    </div>
+
+</div>
+
+</body>
+</html>
+
