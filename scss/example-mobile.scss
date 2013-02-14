@@ -1,9 +1,0 @@
-@import "grid-helpers";
-
-// "initial" grid
-// only initialize when the viewport is wide enough
-
-@import "grid-core";
-/* 2, 3, 4 column grids */
-@include grid-build-units(2 3 4);
-
