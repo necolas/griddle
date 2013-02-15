@@ -24,8 +24,7 @@ provide features that float-based layouts cannot.
 * Infinite nesting.
 * Built-in redundancy coupled with automatic consolidation of rules in compiled
   CSS.
-* Suitable for responsive layouts. Generate styles (tied to HTML classes) to
-  modify cell proportions at different breakpoints.
+* Modify the grid at different breakpoints for responsive layouts.
 * RTL support.
 
 ## How to use it
@@ -48,16 +47,19 @@ used to generate modified selectors to override the width of a cell at
 different breakpoints. For example:
 
 ```scss
-// …within a media-query for min-width >= 40em
-// Create 2, 3, 4, 5, 6, and 12 column grids (wider screens)
-@include griddle-build(2 3 4 5 6 12, '--desktop');
+@media (min-width: 40em) {
+    // Create 2, 3, 4, 5, 6, and 12 column grids (wider screens)
+    @include griddle-build(2 3 4 5 6 12, '--desktop');
+}
 ```
 
-You can have a cell that is 50% wide at narrow viewports, but 25% wide at wider
-viewports when the styles are applied to the modifier class:
+Each grid cell is created in the same way, using HTML classes. You can have a
+cell that is 50% wide at narrow viewports, but 25% wide at wider viewports when
+the styles are applied to the modifier class:
 
 ```html
-<div class="grid__cell unit-1-2 unit-1-4--desktop>
+<div class="grid__cell unit-1-2 unit-1-4--desktop">
+    ...
 </div>
 ```
 
