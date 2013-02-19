@@ -37,11 +37,12 @@
     @each $n in $units {
         // Avoid creating rules like `.unit-12-12 {}`
         $x: $n - 1;
-        // Initialize variables
-        $i-r: ();
-        $n-r: ();
 
         @for $i from 1 through $x {
+            // Initialize variables
+            $i-r: ();
+            $n-r: ();
+
             // Find the greatest common factor
             $g: gcf($i, $n);
 
