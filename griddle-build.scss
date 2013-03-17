@@ -40,8 +40,8 @@
 
         @for $i from 1 through $x {
             // Initialize variables
-            $i-r: ();
-            $n-r: ();
+            $i-r: 0;
+            $n-r: 0;
 
             // Find the greatest common factor
             $g: gcf($i, $n);
@@ -59,8 +59,8 @@
 
             // Create units based on fractions
             .unit-#{$i}-#{$n}#{$modifier} {
-                // Ff this unit can be reduced then extend the previous rule
-                @if $i-r and $canreduce {
+                // If this unit can be reduced then extend the previous rule
+                @if $canreduce {
                     @extend .unit-#{$i-r}-#{$n-r}#{$modifier};
                 }
                 // Otherwise create a new % width
