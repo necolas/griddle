@@ -47,8 +47,16 @@ $grid-gutter: 20px !default; // can be px, em, or %
     margin: 0 -0.5 * $grid-gutter; /* 1 */
     text-align: $grid-direction; /* 2 */
     letter-spacing: -0.31em; /* 3 */
-    word-spacing: -0.43em; /* 3 */
     text-rendering: optimizespeed; /* 4 */
+}
+
+/**
+ * Opera hack
+ */
+
+.opera:-o-prefocus,
+.grid {
+    word-spacing: -0.43em; /* 3 */
 }
 
 /**
