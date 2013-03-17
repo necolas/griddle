@@ -1,5 +1,12 @@
 == HEAD
 
+* Fix whitespace collapse in Chrome 25.
+* Minor code clarity improvements.
+
+== 0.2.1 (February 19, 2013)
+
+* Fix grid builder unit rule-consolidation
+
 == 0.2.0 (February 14, 2013)
 
 * Remove support for "push" classes.
