@@ -1,5 +1,7 @@
 == HEAD
 
+== 0.2.2 (March 17, 2013)
+
 * Fix whitespace collapse in Chrome 25.
 * Minor code clarity improvements.
 
