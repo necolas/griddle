@@ -11,7 +11,7 @@ provide features that float-based layouts cannot.
 ## Installation
 
 * Download: [zip](https://github.com/necolas/griddle/zipball/master)
-* [Bower](https://github.com/twitter/bower/): `bower install griddle`
+* [Bower](http://bower.io/): `bower install --save griddle`
 * Git: `git clone https://github.com/necolas/griddle.git`
 
 ## Features
