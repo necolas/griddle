@@ -95,6 +95,9 @@ $grid-gutter: 20px !default; // can be px, em, or %
     text-rendering: auto; /* 5 */
 }
 
+/* Grid modifiers
+   ========================================================================== */
+
 /**
  * Modifier: horizontally center all grid units
  * Allows for automatic unit centering irrespective of the number of
@@ -106,6 +109,25 @@ $grid-gutter: 20px !default; // can be px, em, or %
 }
 
 /**
+ * Modifier: align horizontally all grid units to the left
+ */
+
+.grid--left {
+    text-align: left;
+}
+
+/**
+ * Modifier: align horizontally all grid units to the right
+ */
+
+.grid--right {
+    text-align: right;
+}
+
+/* Grid cell modifiers
+   ========================================================================== */
+
+/**
  * Modifier: horizontally center one unit
  * Set a specific unit to be horizontally centered. Doesn't affect
  * any other units. Can still contain a child `grid` object.
@@ -114,4 +136,26 @@ $grid-gutter: 20px !default; // can be px, em, or %
 .grid__cell--center {
     display: block;
     margin: 0 auto;
+}
+
+/**
+ * Modifier: align horizontally one unit to the left
+ * Set a specific unit to be horizontally on the left. Doesn't affect
+ * any other units. Can still contain a child `grid` object.
+ */
+
+.grid__cell--left {
+    display: block;
+    margin-right: auto;
+}
+
+/**
+ * Modifier: align horizontally one unit to the right
+ * Set a specific unit to be horizontally on the right. Doesn't affect
+ * any other units. Can still contain a child `grid` object.
+ */
+
+.grid__cell--right {
+    display: block;
+    margin-left: auto;
 }
