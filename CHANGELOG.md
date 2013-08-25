@@ -1,5 +1,7 @@
 == HEAD
 
+* Make the SCSS files partials so that they aren't compiled to CSS.
+
 == 0.2.2 (March 17, 2013)
 
 * Fix whitespace collapse in Chrome 25.
