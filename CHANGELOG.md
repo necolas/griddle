@@ -1,5 +1,7 @@
 === HEAD
 
+=== 0.3.0 (August 25, 2013)
+
 * Add `left` and `right` position modifiers for grids and cells.
 * Make the SCSS files partials so that they aren't compiled to CSS.
 

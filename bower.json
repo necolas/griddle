@@ -1,6 +1,6 @@
 {
     "name": "griddle",
-    "version": "0.2.2",
+    "version": "0.3.0",
     "main": [
         "_griddle.scss",
         "_griddle-build.scss"
