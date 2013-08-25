@@ -1,6 +1,10 @@
 {
     "name": "griddle",
     "version": "0.2.2",
+    "main": [
+        "_griddle.scss",
+        "_griddle-build.scss"
+    ],
     "author": "Nicolas Gallagher",
     "homepage": "http://necolas.github.com/griddle/",
     "repository": {
