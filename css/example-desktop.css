@@ -10,120 +10,60 @@
   width: 50%;
 }
 
-.before-1-2--desktop, .before-2-4--desktop, .before-3-6--desktop, .before-6-12--desktop {
-  margin-left: 50%;
-}
-
 .unit-1-3--desktop, .unit-2-6--desktop, .unit-4-12--desktop {
   width: 33.333%;
-}
-
-.before-1-3--desktop, .before-2-6--desktop, .before-4-12--desktop {
-  margin-left: 33.333%;
 }
 
 .unit-2-3--desktop, .unit-4-6--desktop, .unit-8-12--desktop {
   width: 66.667%;
 }
 
-.before-2-3--desktop, .before-4-6--desktop, .before-8-12--desktop {
-  margin-left: 66.667%;
-}
-
 .unit-1-4--desktop, .unit-3-12--desktop {
   width: 25%;
-}
-
-.before-1-4--desktop, .before-3-12--desktop {
-  margin-left: 25%;
 }
 
 .unit-3-4--desktop, .unit-9-12--desktop {
   width: 75%;
 }
 
-.before-3-4--desktop, .before-9-12--desktop {
-  margin-left: 75%;
-}
-
 .unit-1-5--desktop {
   width: 20%;
-}
-
-.before-1-5--desktop {
-  margin-left: 20%;
 }
 
 .unit-2-5--desktop {
   width: 40%;
 }
 
-.before-2-5--desktop {
-  margin-left: 40%;
-}
-
 .unit-3-5--desktop {
   width: 60%;
-}
-
-.before-3-5--desktop {
-  margin-left: 60%;
 }
 
 .unit-4-5--desktop {
   width: 80%;
 }
 
-.before-4-5--desktop {
-  margin-left: 80%;
-}
-
 .unit-1-6--desktop, .unit-2-12--desktop {
   width: 16.667%;
-}
-
-.before-1-6--desktop, .before-2-12--desktop {
-  margin-left: 16.667%;
 }
 
 .unit-5-6--desktop, .unit-10-12--desktop {
   width: 83.333%;
 }
 
-.before-5-6--desktop, .before-10-12--desktop {
-  margin-left: 83.333%;
-}
-
 .unit-1-12--desktop {
   width: 8.333%;
-}
-
-.before-1-12--desktop {
-  margin-left: 8.333%;
 }
 
 .unit-5-12--desktop {
   width: 41.667%;
 }
 
-.before-5-12--desktop {
-  margin-left: 41.667%;
-}
-
 .unit-7-12--desktop {
   width: 58.333%;
 }
 
-.before-7-12--desktop {
-  margin-left: 58.333%;
-}
-
 .unit-11-12--desktop {
   width: 91.667%;
-}
-
-.before-11-12--desktop {
-  margin-left: 91.667%;
 }
 
 .sidebar {
