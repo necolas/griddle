@@ -1,5 +1,7 @@
 # Griddle
 
+![unmaintained](http://img.shields.io/badge/status-unmaintained-red.png)
+
 Griddle is a CSS grid system for modern browsers. It is generated from a set of
 Sass functions and mixins. The grid uses `inline-block` and `box-sizing` to
 provide features that float-based layouts cannot.
